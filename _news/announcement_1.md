@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2024-10-28 
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+[ReFu](https://arxiv.org/abs/2409.12326) is accepcted to [WACV2025](https://wacv2025.thecvf.com/) 🎉. See you in Tucson!

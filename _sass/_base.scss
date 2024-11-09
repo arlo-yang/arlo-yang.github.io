@@ -379,11 +379,19 @@ ul.task-list input[type="checkbox"] {
 
 // Social (bottom)
 
+.intro-social-icons {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1.5rem; 
+  font-size: 2rem; 
+}
+
+
 .social {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 2rem;
 
     a {
       i::before {
@@ -403,6 +411,7 @@ ul.task-list input[type="checkbox"] {
     font-size: 0.8rem;
   }
 }
+
 
 .wechat-modal {
   display: none;

@@ -2,24 +2,23 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Undergraduate student @ <a href="https://www.ed.ac.uk/" target="_blank">University of Edinburgh</a>
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a senior undergraduate student at The University of Edinburgh, where I am honored to be supervised by [Prof. Changjian Li](https://enigma-li.github.io/). Previously, I completed a summer research project on continual learning under the guidance of [Prof. Huiping Zhuang](https://zhuanghp.github.io/). My research interests lie at the intersection of computer vision, computer graphics, and machine learning.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+During my junior year, I was selected as an exchange student at [The University of Texas at Austin](https://www.utexas.edu/), where I had the privilege of attending courses by [Prof. Tan Bui-Thanh](https://users.oden.utexas.edu/~tanbui/) (ML), [Prof. Zhangyang “Atlas” Wang](https://vita-group.github.io/research.html) (CV), and [Prof. Louis Gutierrez](https://www.ischool.utexas.edu/people/people-details?PersonID=595) (XAI). Their exceptional teaching and encouragement greatly inspired my commitment to pursuing research in AI.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<div class="intro-social-icons">
+  {% include social.liquid %}
+</div>

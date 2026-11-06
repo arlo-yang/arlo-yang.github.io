@@ -1,0 +1,760 @@
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+
+@font-face {
+  font-family: "LMRomanDemi10";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/sugina-dev/latin-modern-web@1.0.1/font/lmromandemi-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "LMRomanDemi10";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/sugina-dev/latin-modern-web@1.0.1/font/lmromandemi-oblique-webfont.woff") format("woff");
+}
+
+body {
+  padding-bottom: 70px;
+  color: var(--global-text-color);
+  font-family: "LMRomanDemi10", ui-serif, Georgia, "Times New Roman", serif;
+  font-size: 16.5px;
+  font-weight: 400;
+  font-kerning: normal;
+  line-height: 1.62;
+  text-rendering: optimizeLegibility;
+  word-spacing: 0.025em;
+  background-color: var(--global-bg-color);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 66px;
+  }
+}
+
+body > .container[role="main"] {
+  background-color: var(--global-bg-color);
+  margin-top: 0 !important;
+  min-height: calc(100vh - 56px);
+  padding: 2.75rem 2rem 3.5rem;
+}
+
+body.fixed-top-nav {
+  // Add some padding for the nav-bar.
+  padding-top: 56px;
+}
+
+body.sticky-bottom-footer {
+  // Remove padding below footer.
+  padding-bottom: 0;
+}
+
+.container {
+  max-width: $max-content-width;
+}
+
+@media (min-width: 1200px) {
+  body > .container[role="main"] {
+    max-width: $max-content-width;
+  }
+}
+
+// Profile
+.profile {
+  text-align: center;
+  width: 100%;
+
+  figure {
+    aspect-ratio: 1 / 1;
+    background: #f2eee6;
+    border-radius: 50%;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    width: 200px;
+    max-width: 100%;
+  }
+
+  picture {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transform: translateY(-10%) scale(1.24);
+    transform-origin: center top;
+    width: 100%;
+  }
+
+  img.rounded-circle {
+    width: 100%;
+  }
+}
+
+.about-page {
+  // Shared image and text columns keep the introduction, papers and affiliations aligned.
+  --profile-column: 200px;
+  --content-gap: 3rem;
+
+  .about-intro {
+    align-items: center;
+    display: grid;
+    gap: var(--content-gap);
+    grid-template-columns: var(--profile-column) minmax(0, 1fr);
+    margin-bottom: 2.5rem;
+    padding: 0.75rem 0 0.5rem;
+  }
+
+  .about-intro-content p {
+    hyphens: none;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    text-wrap: pretty;
+  }
+
+  .about-intro-content {
+    font-size: 1.03125rem;
+    min-width: 0;
+  }
+
+  .advisor-affiliation {
+    color: var(--global-text-color-light);
+  }
+
+  .post-title {
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.22;
+    margin-bottom: 1rem;
+  }
+
+  .post-header {
+    margin-bottom: 0;
+  }
+
+  .intro-details {
+    margin-bottom: 0.75rem;
+
+    summary {
+      cursor: pointer;
+      display: block;
+      line-height: 1.65;
+      list-style: none;
+
+      &::-webkit-details-marker { display: none; }
+      &::marker { content: ""; }
+    }
+
+    strong { font-weight: 400; }
+
+    p {
+      color: var(--global-text-color-light);
+      font-size: 1rem;
+      margin-top: 0.55rem;
+    }
+
+    .intro-more,
+    .intro-less {
+      color: var(--global-theme-color);
+      margin-left: 0.25rem;
+      white-space: nowrap;
+    }
+
+    .intro-less { display: none; }
+    &[open] .intro-more { display: none; }
+    &[open] .intro-less { display: inline; }
+  }
+
+  .collab-note {
+    border-left: 3px solid var(--global-theme-color);
+    margin-top: 0.95rem;
+    padding-left: 0.65rem;
+
+    strong { font-weight: 400; }
+  }
+
+  summary:focus-visible,
+  button:focus-visible,
+  .social-icon:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 4px;
+  }
+
+  .desc {
+    margin-bottom: 0;
+  }
+
+  article > h2,
+  .experience > h2,
+  .service-activities > h2 {
+    color: var(--global-theme-color);
+    font-size: 1.625rem;
+    font-weight: 400;
+    line-height: 1.3;
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  article > h2 + .publications {
+    margin-top: 0;
+
+    > h2.bibliography:first-child {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  .experience,
+  .service-activities {
+    margin-top: 2.25rem;
+  }
+
+  .experience-location,
+  .activity-meta {
+    color: var(--global-text-color-light);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: normal;
+    margin-inline-start: auto;
+    // Optical alignment for the oblique location labels beside upright text.
+    position: relative;
+    text-align: right;
+    top: -1px;
+    white-space: nowrap;
+  }
+
+  .activity-list {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+    font-size: 1rem;
+
+    li {
+      padding-left: 0.15rem;
+
+      &::marker { color: var(--global-text-color-light); }
+      + li { margin-top: 0.4rem; }
+    }
+
+    // Labels sit next to all-caps venue names, so give them a bit more weight.
+    .activity-label {
+      font-size: 1.0625rem;
+      font-style: italic;
+      font-weight: 500;
+      margin-right: 0.25rem;
+    }
+
+    .activity-paper {
+      color: var(--global-text-color-light);
+    }
+
+    .activity-talk-row {
+      align-items: baseline;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 1rem;
+    }
+
+    .activity-description { min-width: 0; }
+  }
+
+  .experience-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .experience-item {
+      align-items: center;
+      display: grid;
+      gap: var(--content-gap);
+      grid-template-columns: var(--profile-column) minmax(0, 1fr);
+      padding: 0.75rem 0;
+
+      + .experience-item { margin-top: 0.5rem; }
+    }
+
+    .experience-heading {
+      align-items: baseline;
+      display: grid;
+      gap: 0.15rem 1rem;
+      grid-template-columns: minmax(0, 1fr) max-content;
+    }
+
+    h3 {
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 0;
+
+      a { color: var(--global-text-color); }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .experience-role {
+      color: var(--global-text-color-light);
+      font-size: 0.9375rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin-top: 0.15rem;
+    }
+
+    .experience-with {
+      font-size: 1rem;
+      margin-top: 0.2rem;
+
+      p { color: var(--global-text-color-light); }
+    }
+
+  }
+
+  .experience-logo-slot {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .experience-logo {
+    background: transparent;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    width: 160px;
+  }
+
+  .profile {
+    margin-top: 0;
+    // Sit slightly above the intro text's vertical center.
+    position: relative;
+    top: -0.75rem;
+    width: 100%;
+  }
+
+  .contact-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.875rem;
+    line-height: 1;
+    margin-top: 0.8rem;
+    margin-left: -0.25rem;
+    position: relative;
+  }
+
+  .contact-links .social-icon {
+    align-items: center;
+    display: inline-flex;
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    color: var(--global-theme-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    gap: 0.4375rem;
+    min-height: 40px;
+    justify-content: flex-start;
+    justify-self: start;
+    line-height: 1.35;
+    padding: 0 0.25rem;
+    white-space: nowrap;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      background: var(--publication-button-hover-bg-color);
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--global-theme-color);
+      outline-offset: 3px;
+    }
+  }
+
+  .contact-links .social-label {
+    align-items: baseline;
+    color: inherit;
+    display: inline-flex;
+    gap: 0.12em;
+    letter-spacing: 0.015em;
+    // Compensate for the font's ink center sitting below the line-box center.
+    transform: translateY(-0.125em);
+  }
+
+  .contact-links .social-bracket {
+    color: inherit;
+    opacity: 0.55;
+  }
+
+  .contact-links .social-glyph {
+    align-items: center;
+    color: inherit;
+    display: inline-flex;
+    flex: 0 0 1.375rem;
+    font-size: 1rem;
+    height: 1.25rem;
+    // Align the visible right edge so every icon has the same gap before "[".
+    justify-content: flex-end;
+    width: 1.375rem;
+
+    // Filled and open silhouettes need different scales to carry similar visual weight.
+    &.social-glyph-email { font-size: 0.8125rem; }
+    &.social-glyph-scholar { font-size: 1rem; }
+    &.social-glyph-github { font-size: 1.0625rem; }
+    &.social-glyph-wechat { font-size: 1rem; }
+
+    svg {
+      display: block;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+  }
+
+  .wechat-contact {
+    display: inline-flex;
+    justify-self: start;
+    position: relative;
+  }
+
+  .wechat-popover {
+    background: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    left: 0;
+    line-height: 1.5;
+    max-width: calc(100vw - 3rem);
+    padding: 1rem;
+    position: absolute;
+    // Keep this offset intact when the production CSS minifier removes calc spaces.
+    top: 100%;
+    margin-top: 0.5rem;
+    width: 260px;
+    z-index: 10;
+
+    &[hidden] { display: none; }
+
+    &::before {
+      background: var(--global-bg-color);
+      border-left: 1px solid var(--global-divider-color);
+      border-top: 1px solid var(--global-divider-color);
+      content: "";
+      height: 10px;
+      left: var(--wechat-arrow-left, 50%);
+      position: absolute;
+      top: -6px;
+      transform: translateX(-50%) rotate(45deg);
+      width: 10px;
+    }
+
+    .wechat-heading {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .wechat-close {
+      background: none;
+      border: 0;
+      color: var(--global-text-color-light);
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 0.2rem;
+    }
+
+    .wechat-qr {
+      border-radius: 6px;
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .wechat-qr + .wechat-status { text-align: center; }
+
+    .wechat-id-row { display: flex; gap: 0.4rem; }
+
+    input {
+      background: var(--global-code-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 5px;
+      color: var(--global-text-color);
+      font-size: 0.88rem;
+      min-width: 0;
+      padding: 0.4rem 0.5rem;
+      width: 100%;
+    }
+
+    .wechat-copy {
+      background: var(--publication-button-hover-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 5px;
+      color: var(--global-theme-color);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .wechat-status {
+      color: var(--global-text-color-light);
+      font-size: 0.8rem;
+      margin: 0.6rem 0 0;
+    }
+  }
+}
+
+html[data-theme="dark"] .about-page .experience-logo {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 767.98px) {
+  body > .container[role="main"] {
+    padding: 2rem 1.1rem 3rem;
+  }
+
+  .about-page {
+    .about-intro {
+      gap: 1.5rem;
+      grid-template-columns: minmax(0, 1fr);
+      padding-top: 0;
+    }
+
+    .profile {
+      justify-self: center;
+      max-width: 180px;
+      top: 0;
+    }
+
+    .post-title { font-size: 2.1rem; }
+
+    .experience-list .experience-item {
+      gap: 0.8rem;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .experience-logo-slot {
+      justify-content: flex-start;
+      min-height: 0;
+    }
+
+    .experience-logo { width: 160px; }
+
+  }
+}
+
+// Keep two balanced columns when the introduction's text column is narrow.
+@media (max-width: 575.98px), (min-width: 768px) and (max-width: 799.98px) {
+  .about-page .contact-links {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+
+    .social-icon { min-height: 44px; }
+  }
+}
+
+/******************************************************************************
+ * Publications
+ ******************************************************************************/
+
+.publications {
+  .publication-entry {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.85rem;
+  }
+
+  .publication-entry-highlight {
+    --global-theme-color: var(--publication-highlight-link-color);
+    --global-text-color-light: var(--publication-highlight-muted-color);
+    background: var(--publication-highlight-bg-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: -0.9rem;
+    margin-right: -0.9rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .preview-column {
+    flex: 0 0 auto;
+    margin-bottom: 0.5rem;
+    width: min(100%, 300px);
+  }
+
+  .publication-preview {
+    aspect-ratio: 1.5 / 1;
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    figure,
+    picture {
+      display: block;
+      height: 100%;
+      margin: 0;
+      width: 100%;
+    }
+
+    .preview-img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .preview-placeholder {
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(0, 118, 223, 0.11), rgba(0, 171, 55, 0.08)),
+        var(--global-bg-color);
+      color: var(--global-text-color-light);
+      display: flex;
+      font-size: 0.95rem;
+      font-weight: 600;
+      height: 100%;
+      justify-content: center;
+      letter-spacing: 0;
+      width: 100%;
+    }
+
+    .preview-badge {
+      background-color: var(--global-theme-color);
+      border-radius: 4px;
+      bottom: 0.45rem;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+      left: 0.45rem;
+      line-height: 1;
+      padding: 0.28rem 0.4rem;
+      position: absolute;
+
+      a {
+        color: white;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .publication-preview-interface {
+    background: transparent;
+    border: 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 0;
+
+    .preview-img {
+      object-fit: cover;
+    }
+  }
+
+  .publication-preview-contain {
+    background: #ffffff;
+
+    .preview-img {
+      object-fit: contain;
+    }
+  }
+
+  .publication-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    width: 100%;
+
+    .links {
+      margin-top: 0.25rem;
+    }
+
+    > .hidden { display: none; }
+    > .hidden.open { display: block; }
+  }
+}
+
+@media (min-width: 576px) {
+  .publications {
+    --publication-preview-width: 200px;
+    --publication-preview-height: 134px;
+    --publication-info-inset: 3px;
+
+    .publication-entry {
+      align-items: stretch;
+      column-gap: 3rem;
+      display: grid;
+      grid-template-columns: var(--publication-preview-width) minmax(0, 1fr);
+    }
+
+    .preview-column {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    .publication-preview {
+      height: var(--publication-preview-height);
+    }
+
+    .publication-info-with-preview {
+      box-sizing: border-box;
+      justify-content: flex-start;
+      min-height: var(--publication-preview-height);
+      padding-bottom: var(--publication-info-inset);
+      padding-top: var(--publication-info-inset);
+      width: auto;
+
+      .links {
+        align-items: flex-end;
+        margin-bottom: 0;
+        margin-top: 0.35rem;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .publications {
+    h2.bibliography:not(:has(+ ol.bibliography > li:first-child .publication-entry-highlight)) {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .publications {
+    .preview-column {
+      width: min(100%, 300px);
+    }
+
+    .publication-preview {
+      aspect-ratio: 1.5 / 1;
+    }
+  }
+}

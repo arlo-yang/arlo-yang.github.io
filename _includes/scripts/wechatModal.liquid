@@ -1,0 +1,82 @@
+{% if site.wechat_id or site.wechat_qr %}
+  <script>
+    (() => {
+      const trigger = document.getElementById('wechat-button');
+      const panel = document.getElementById('wechat-contact');
+      if (!trigger || !panel) return;
+      const contact = trigger.closest('.wechat-contact');
+      let closeTimer;
+      let pinned = false;
+
+      function positionPanel() {
+        const buttonBounds = trigger.getBoundingClientRect();
+        const contactBounds = contact.getBoundingClientRect();
+        const buttonCenter = buttonBounds.left + buttonBounds.width / 2;
+        const panelWidth = panel.offsetWidth;
+        const preferredLeft = buttonCenter - panelWidth / 2;
+        const viewportWidth = document.documentElement.clientWidth;
+        const panelLeft = Math.max(12, Math.min(preferredLeft, viewportWidth - panelWidth - 12));
+        panel.style.left = `${panelLeft - contactBounds.left}px`;
+        panel.style.setProperty('--wechat-arrow-left', `${buttonCenter - panelLeft}px`);
+      }
+
+      function setOpen(open) {
+        clearTimeout(closeTimer);
+        panel.hidden = !open;
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) positionPanel();
+        if (!open) pinned = false;
+      }
+
+      window.addEventListener('resize', () => {
+        if (!panel.hidden) positionPanel();
+      });
+
+      trigger.addEventListener('click', () => {
+        const open = !pinned;
+        setOpen(open);
+        pinned = open;
+      });
+      contact.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') setOpen(true);
+      });
+      contact.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse' && !pinned && !contact.contains(document.activeElement)) {
+          closeTimer = setTimeout(() => setOpen(false), 180);
+        }
+      });
+      contact.addEventListener('focusout', event => {
+        if (!contact.contains(event.relatedTarget)) setOpen(false);
+      });
+      panel.querySelector('.wechat-close').addEventListener('click', () => {
+        setOpen(false);
+        trigger.focus();
+      });
+      document.addEventListener('click', event => {
+        if (!contact.contains(event.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !panel.hidden) {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+
+      const copyButton = panel.querySelector('.wechat-copy');
+      if (copyButton) {
+        copyButton.addEventListener('click', async () => {
+          const input = panel.querySelector('#wechat-id');
+          const status = panel.querySelector('.wechat-status');
+          try {
+            await navigator.clipboard.writeText(input.value);
+            status.textContent = 'WeChat ID copied.';
+          } catch (error) {
+            input.focus();
+            input.select();
+            status.textContent = 'Select and copy this ID.';
+          }
+        });
+      }
+    })();
+  </script>
+{% endif %}

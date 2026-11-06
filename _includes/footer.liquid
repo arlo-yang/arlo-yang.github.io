@@ -1,0 +1,13 @@
+{% if site.impressum_path or site.last_updated %}
+  <footer class="{% if site.footer_fixed %}fixed-bottom{% else %}sticky-bottom mt-5{% endif %}" role="contentinfo">
+    <div class="container{% if site.footer_fixed %} mt-0{% endif %}">
+      {% if site.impressum_path %}
+        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>
+      {% endif %}
+      {% if site.last_updated %}
+        {% if site.impressum_path %}&nbsp;{% endif %}
+        Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+      {% endif %}
+    </div>
+  </footer>
+{% endif %}

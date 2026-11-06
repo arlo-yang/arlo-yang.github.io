@@ -1,0 +1,15 @@
+"AAAI":
+  url: https://aaai.org/conference/aaai/aaai-26/
+  color: "#4f5d75"
+
+"WACV":
+  url: https://wacv.thecvf.com/Conferences/2026
+  color: "#5b6b4f"
+
+"TOG":
+  url: https://dl.acm.org/journal/tog
+  color: "#33658a"
+
+"arXiv":
+  url: https://arxiv.org/
+  color: "#8a5a44"

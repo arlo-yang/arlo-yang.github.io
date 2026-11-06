@@ -1,0 +1,106 @@
+---
+layout: default
+---
+<div class="post about-page">
+  <article>
+    <section class="about-intro">
+      {% if page.profile %}
+      <aside class="profile">
+        {% if page.profile.image %}
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% if page.profile.image_circular %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+          {% else %}
+            {% assign profile_image_class = 'img-fluid z-depth-1
+      rounded' %}
+          {% endif %}
+          {% capture sizes %}270px{% endcapture %}
+          {%
+            include figure.liquid loading="eager" fetchpriority="high" decoding="async" path=profile_image_path class=profile_image_class sizes=sizes alt=site.first_name
+            cache_bust=true
+          %}
+        {% endif %}
+        {% if page.profile.more_info %}
+          <div class="more-info">{{ page.profile.more_info }}</div>
+        {% endif %}
+      </aside>
+      {% endif %}
+
+      <div class="about-intro-content">
+        <header class="post-header">
+          <h1 class="post-title">
+            {% if site.title == 'blank' %}
+              {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </h1>
+          {% if page.subtitle %}<p class="desc">{{ page.subtitle }}</p>{% endif %}
+        </header>
+        <div>{{ content }}</div>
+        <div class="contact-links" aria-label="Contact links">{% include social.liquid %}</div>
+      </div>
+    </section>
+
+    <!-- Selected papers -->
+    {% if page.selected_papers %}
+      <h2 id="publications-heading">Publications</h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    {% if page.experience %}
+      <section class="experience" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Experience</h2>
+        <ul class="experience-list">
+          {% for entry in page.experience %}
+            <li class="experience-item">
+              <a class="experience-logo-slot" href="{{ entry.url }}" aria-label="{{ entry.institution }}">
+                <img class="experience-logo" src="{{ entry.logo | prepend: '/assets/img/institutions/' | relative_url }}" alt="{{ entry.institution }} logo" loading="lazy" decoding="async" width="180" height="56">
+              </a>
+              <div class="experience-info">
+                <div class="experience-heading">
+                  <h3><a href="{{ entry.url }}">{{ entry.institution }}</a></h3>
+                  <p class="experience-location">{{ entry.location }}</p>
+                </div>
+                <p class="experience-role">{{ entry.role }}</p>
+                <div class="experience-with">{{ entry.details | markdownify }}</div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if page.service %}
+      <section class="service-activities" aria-labelledby="service-heading">
+        <h2 id="service-heading">Service &amp; Activities</h2>
+        <ul class="activity-list">
+          {% if page.service.reviewer %}
+            <li><span class="activity-label">Reviewer:</span> {{ page.service.reviewer }}</li>
+          {% endif %}
+          {% for talk in page.service.talks %}
+            <li class="activity-talk">
+              <div class="activity-talk-row">
+                <span class="activity-description"><span class="activity-label">Talk:</span> {{ talk.event }}: <a href="{{ talk.url }}">{{ talk.workshop }}</a>{% if talk.paper %} <span class="activity-paper">(paper: {{ talk.paper }})</span>{% endif %}</span>
+                <span class="activity-meta">{{ talk.location }}</span>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    <!-- Social -->
+    {% if page.social %}
+      <div class="social">
+        <div class="contact-icons">{% include social.liquid %}</div>
+
+        <div class="contact-note">{{ site.contact_note }}</div>
+      </div>
+    {% endif %}
+
+    {% if site.newsletter.enabled and site.footer_fixed %}
+      {% include scripts/newsletter.liquid center=true %}
+    {% endif %}
+  </article>
+</div>

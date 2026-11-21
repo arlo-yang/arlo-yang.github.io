@@ -19,8 +19,20 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          ruby-version: "3.3" # newer runner images only ship the latest patch of each series
           bundler-cache: true
+
+      - name: Install ImageMagick
+        # jekyll-imagemagick shells out to `convert`; newer images may lack it or ship only IM7's `magick`
+        run: |
+          if ! command -v convert >/dev/null && ! command -v magick >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq imagemagick
+          fi
+          if ! command -v convert >/dev/null; then
+            sudo ln -s "$(command -v magick)" /usr/local/bin/convert
+          fi
+          convert -version | head -1
 
       - name: Build
         run: |

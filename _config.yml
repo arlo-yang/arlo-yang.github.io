@@ -197,7 +197,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt", "assets/js/search/*.js", "assets/libs/**/*"]
+  exclude: ["robots.txt", "google*.html", "assets/js/search/*.js", "assets/libs/**/*"] # google*.html: Search Console verification file, must stay byte-identical
   uglifier_args:
     harmony: true
 

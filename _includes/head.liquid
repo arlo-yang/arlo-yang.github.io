@@ -78,7 +78,14 @@
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
   >
 {% elsif site.icon != blank %}
-  <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
+  {% comment %}
+    Real image files (Google can't use an emoji data: URI). They sit at the site root so the default
+    /favicon.ico and /apple-touch-icon.png lookups also work; keep these URLs stable.
+    Current icon: the pumpkin from Google's Noto Emoji (Apache-2.0).
+  {% endcomment %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="{{ site.icon | prepend: '/' | relative_url }}" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">

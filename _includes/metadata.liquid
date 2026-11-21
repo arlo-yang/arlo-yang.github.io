@@ -244,6 +244,16 @@
         }
       }
     </script>
+    {% comment %} Site name Google shows above the result, instead of the github.io host {% endcomment %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": {{ site.seo_site_name | default: person.name | jsonify }},
+        {% if site.seo_site_alternate_name %}"alternateName": {{ site.seo_site_alternate_name | jsonify }},{% endif %}
+        "url": {{ site_root | jsonify }}
+      }
+    </script>
   {% else %}
     <script type="application/ld+json">
       {

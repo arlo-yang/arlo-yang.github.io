@@ -10,6 +10,8 @@ email: arloyang397@gmail.com
 # Search engines: people search "Yi Yang Edinburgh", so the <title>, meta description and
 # structured data put the name right next to the affiliation.
 seo_title: Yi Yang | PhD Student, University of Edinburgh # <title> of the homepage
+seo_site_name: Yi Yang # site name Google shows above the search result (instead of github.io)
+seo_site_alternate_name: Yi Yang, University of Edinburgh
 seo_person: # schema.org Person, emitted on the homepage
   name: Yi Yang
   alternate_names: # optional list, e.g. your Chinese name
@@ -30,7 +32,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
 keywords: 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 🎃 # favicon image in /assets/img/ or short emoji
+icon: favicon.png # PNG at the site root (favicon.ico and apple-touch-icon.png sit next to it), or a short emoji
 
 url: https://arlo-yang.github.io # the base hostname & protocol for your site
 baseurl:  # the subpath of your site, e.g. /blog/. Leave blank for root

@@ -15,8 +15,9 @@ layout: default
       rounded' %}
           {% endif %}
           {% capture sizes %}270px{% endcapture %}
+          {% capture profile_alt %}{{ site.seo_person.name | default: site.first_name }}{% if site.seo_person.job_title %}, {{ site.seo_person.job_title }} at the {{ site.seo_person.affiliation }}{% endif %}{% endcapture %}
           {%
-            include figure.liquid loading="eager" fetchpriority="high" decoding="async" path=profile_image_path class=profile_image_class sizes=sizes alt=site.first_name
+            include figure.liquid loading="eager" fetchpriority="high" decoding="async" path=profile_image_path class=profile_image_class sizes=sizes alt=profile_alt
             cache_bust=true
           %}
         {% endif %}

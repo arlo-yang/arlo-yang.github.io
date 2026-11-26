@@ -4,7 +4,8 @@
     <div class="container">
       {% if page.permalink != '/' %}
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == 'blank' %}
+          {% comment %}Keep the styled name (bold first name) now that site.title is set to the plain name.{% endcomment %}
+          {% if site.title == 'blank' or site.first_name %}
             {% if site.first_name %}
               <span class="font-weight-bold">
                 {{- site.first_name -}}

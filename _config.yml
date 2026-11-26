@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Yi Yang # the website title; also the <title> of feed.xml, which would otherwise read "blank"
 first_name: Yi
 middle_name: 
 last_name: Yang
